@@ -65,6 +65,39 @@ const books = [
         genres: "Fiction, Science Fiction, Time Travel, Literary Fiction",
         publishDate: "First published April 5, 2022",
     },
+    {
+        image: {
+            src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1634748496i/58065033.jpg",
+            alt: "Lessions in chemistry book cover",
+        },
+        title: "Lessons in Chemistry",
+        author: "Bonnie Garmus",
+        pages: "400 pages",
+        genres: "Romance, Feminism, Fiction",
+        publishDate: "First published March 31, 2022",
+    },
+    {
+        image: {
+            src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651600548i/58733693.jpg",
+            alt: "Remarkably bright creatures book cover",
+        },
+        title: "Remarkably Bright Creatures",
+        author: "Shelby Van Pelt",
+        pages: "360 pages",
+        genres: "Fiction, Mystery, Animals",
+        publishDate: "First published May 3, 2022",
+    },
+    {
+        image: {
+            src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1642705453i/59912428.jpg",
+            alt: "Mad honey book cover",
+        },
+        title: "Mad Honey",
+        author: "Jodi Picoult, Jennifer Finney Boylan",
+        pages: "464 pages",
+        genres: "Fiction, Mystery, Audiobook",
+        publishDate: "First published October 4, 2022",
+    },
 ];
 
 export default books;

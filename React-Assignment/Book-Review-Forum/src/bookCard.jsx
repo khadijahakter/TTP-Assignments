@@ -1,5 +1,4 @@
 export default function BookCard({book}) {
-    // pull data from argument
     const { 
         image: { src, alt }, 
         title, 
@@ -20,9 +19,9 @@ export default function BookCard({book}) {
                 <h2 className="b-desc__book-title">{title}</h2>
                 <p className="b-desc__author">{author}</p>
                 <ul className="b-desc__metadata">
-                <li className="b-desc__pages">{pages}</li>
-                <li className="b-desc__genres">{genres}</li>
-                <li className="b-desc__publish-date">{publishDate}</li>
+                    <li className="b-desc__pages">{pages}</li>
+                    <li className="b-desc__genres">{genres}</li>
+                    <li className="b-desc__publish-date">{publishDate}</li>
                 </ul>
             </div>
         </div>
