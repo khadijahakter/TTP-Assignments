@@ -1,0 +1,88 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.container {
+  margin: 0 auto;
+  max-width: 60rem;
+}
+
+.b-desc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  background-color: rgb(193, 226, 206); 
+
+}
+
+.b-desc__book-title {
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.b-desc__author {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.b-desc__metadata {
+  list-style: none;
+  padding-left: 0;
+}
+
+.b-desc__book-image {
+  height: 250px;
+  width: 200px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
