@@ -5,10 +5,11 @@ import Modal from "./ui/Modal";
 import './App.css'
 
 function App() {
-  // declare a state variable and function to update state
   const [search, setSearch] = useState('');
   const [filteredBooks, setFilteredBooks] = useState(books);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [reviewText, setReviewText] = useState('');
 
   useEffect(() => {
     setFilteredBooks(
@@ -18,11 +19,7 @@ function App() {
         book.genres.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, books]);
-
-  const bookCards = filteredBooks.map((book, i) => {
-    return <BookCard book={book} key={i} />;
-  });
+  }, [search]);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -32,6 +29,50 @@ function App() {
     setIsModalVisible(false);
   }
 
+  const handleInputChange = (event) => {
+    setReviewText(event.target.value);
+  };
+
+  const handleAddBookReviewSubmit = (event) => {
+    event.preventDefault();
+
+    if (selectedBook) {
+      const updatedBooks = filteredBooks.map((book) => {
+        if (book.title === selectedBook.title) {
+          return {
+            ...book,
+            reviews: book.reviews ? [...book.reviews, reviewText] : [reviewText],
+          };
+        }
+
+        return book;
+      });
+
+      setFilteredBooks(updatedBooks);
+      setReviewText('');
+      hideModal();
+    }
+  };
+
+  const bookCards = filteredBooks.map((book, i) => {
+    return <BookCard book={book} key={i} showModal={showModal} setSelectedBook={setSelectedBook} />;
+});
+
+const addReview = (book, reviewText) => {
+  const updatedBooks = filteredBooks.map((b) => {
+    if (b.title === book.title) {
+      return {
+        ...b,
+        reviews: b.reviews ? [...b.reviews, reviewText] : [reviewText],
+      };
+    }
+
+    return b;
+  });
+
+  setFilteredBooks(updatedBooks);
+  hideModal();
+};
 
   return (
     <div>
@@ -44,40 +85,24 @@ function App() {
         className="w-full px-3 py-2 border-2 border-gray-300 bg-white rounded-md outline-none focus:border-purple-100"
         style={{ marginBottom: '2rem' }}
       />
-      <div className="flex justify-between">
-        <div>
-          <button
-            className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3" 
-            onClick={showModal}
-          >
-            Add a Book
-          </button>
-        </div>
-      </div>
       <div className="grid grid-cols-3 gap-4">
         {bookCards}
-        <Modal
-        isVisible={isModalVisible}
-        hideModal={hideModal}
-        >
+        <Modal isVisible={isModalVisible} hideModal={hideModal} book={selectedBook} addReview={addReview}>
+          {selectedBook && (
+            <form onSubmit={handleAddBookReviewSubmit}>
+              <h2>{selectedBook.title} Review</h2>
+              <textarea
+                value={reviewText}
+                onChange={handleInputChange}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          )}
         </Modal>
-        {/* <form
-          onSubmit={handleAddJobFormSubmit}
-          className="selection:bg-blue-200 flex flex-col gap-2"
-        >
-          <fieldset className="flex flex-col">
-            <label htmlFor="title">Book Title</label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              className="bg-white border-4 focus:outline-none p-2"
-            />
-          </fieldset>
-          </form> */}
+
       </div>
     </div>
-  )
+  );
 }
 
 export default App;

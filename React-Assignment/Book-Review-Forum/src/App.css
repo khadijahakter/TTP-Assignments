@@ -4,7 +4,7 @@
 
 .b-desc {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   gap: 35px;
   background-color: whitesmoke;
@@ -26,6 +26,7 @@
 }
 
 .b-desc__metadata {
+  
   padding-left: 0;
   padding-right: 15%;
 }
@@ -43,4 +44,8 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   
+}
+
+.btn__review {
+  text-align: center;
 }

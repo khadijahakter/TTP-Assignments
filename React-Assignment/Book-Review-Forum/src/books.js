@@ -9,6 +9,9 @@ const books = [
         pages: "304 pages",
         genres: "Mystery, Thriller",
         publishDate: "First published January 4, 2022",
+        reviews: ["I'm not sure how I feel about this one. It's very much a 'written during the pandemic' book. ",
+        "Man. I really loved this. An epic novel in less than 300 pages!"],
+        id: 1,
     },
     {
         image: {
@@ -20,6 +23,8 @@ const books = [
         pages: "805 pages",
         genres: "Fantasy, Romance, Adult, Fiction",
         publishDate: "First published February 15, 2022",
+        reviews: ["This is an Inception level conundrum!"],
+        id: 2,
     },
     {
         image: {
@@ -31,6 +36,8 @@ const books = [
         pages: "377 pages",
         genres: "Romance, Fiction, Contemporary",
         publishDate: "First published May 3, 2022",
+        reviews: ["This is an Inception level conundrum!"],
+        id: 3,
     },
     {
         image: {
@@ -42,6 +49,8 @@ const books = [
         pages: "228 pages",
         genres: "Poetry, Nonfiction, Audiobook, Race",
         publishDate: "First published December 7, 2021",
+        reviews: ["This is an Inception level conundrum!"],
+        id: 4,
     },
     {
         image: {
@@ -53,6 +62,8 @@ const books = [
         pages: "401 pages",
         genres: "Fiction, Contemporary, Romance",
         publishDate: "First published July 5, 2022",
+        reviews: ["This is an Inception level conundrum!"],
+        id: 5,
     },
     {
         image: {
@@ -64,6 +75,9 @@ const books = [
         pages: "259 pages",
         genres: "Fiction, Science Fiction, Time Travel, Literary Fiction",
         publishDate: "First published April 5, 2022",
+        reviews: ["Beyond incredible. Awesome, powerful, clever, magnificent and just absolutely fantastic."],
+        id: 6,
+
     },
     {
         image: {
@@ -75,6 +89,8 @@ const books = [
         pages: "400 pages",
         genres: "Romance, Feminism, Fiction",
         publishDate: "First published March 31, 2022",
+        reviews: ["This is an Inception level conundrum!"],
+        id: 7,
     },
     {
         image: {
@@ -86,6 +102,8 @@ const books = [
         pages: "360 pages",
         genres: "Fiction, Mystery, Animals",
         publishDate: "First published May 3, 2022",
+        reviews: ["Loved! Will read again!"],
+        id: 8,
     },
     {
         image: {
@@ -97,6 +115,8 @@ const books = [
         pages: "464 pages",
         genres: "Fiction, Mystery, Audiobook",
         publishDate: "First published October 4, 2022",
+        reviews: ["My expectations were too high as I found this bland."],
+        id: 9,
     },
 ];
 

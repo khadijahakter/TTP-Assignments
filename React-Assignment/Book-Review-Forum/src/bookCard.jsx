@@ -1,12 +1,17 @@
-export default function BookCard({ book, showModal }) {
+export default function BookCard({ book, showModal, setSelectedBook }) {
     const {
         image: { src, alt },
         title,
         author,
         pages,
         genres,
-        publishDate
+        publishDate,
+        reviews,
     } = book;
+
+    const displayReviews = () => {
+        alert(`Reviews for ${title}: \n\n${reviews.join('\n\n')}`);
+    };
 
     return (
         <div className="b-desc">
@@ -23,14 +28,20 @@ export default function BookCard({ book, showModal }) {
                     <li className="b-desc__genres">{genres}</li>
                     <li className="b-desc__publish-date">{publishDate}</li>
                 </ul>
-                <div className="flex justify-between">
-                    <div>
-                        <button
-                            className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3"
-                            onClick={showModal}
-                        >Submit Review
-                        </button>
-                    </div>
+                <div className = "btn__review">
+                    <button
+                        className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3"
+                        onClick={() => {
+                          showModal();
+                          setSelectedBook(book);
+                        }}
+                    >Submit Review
+                    </button>
+                    <button
+                        className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3"
+                        onClick={displayReviews}
+                    >Reviews
+                    </button>
                 </div>
             </div>
         </div>
