@@ -76,6 +76,8 @@ function App() {
         review: "",
       });
       setIsModalVisible(false);
+      console.log("Updated Reviews:", newBookData.find(book => book.title === bookFormState.title)?.reviews);
+
     }
   };
 
