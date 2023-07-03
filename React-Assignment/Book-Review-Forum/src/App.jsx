@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import BookCard from "./bookCard";
 import books from "./books";
-import Modal from "./ui/Modal";
 import './App.css'
+import Modal from './ui/Modal';
 
 function App() {
   const [search, setSearch] = useState('');
   const [filteredBooks, setFilteredBooks] = useState(books);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
-  const [reviewText, setReviewText] = useState('');
+  const [bookData, setBookData] = useState(books);
+
+  const [bookFormState, setBookFormState] = useState({
+    title: "",
+    author: "",
+    username: "",
+    review: "",
+  });
 
   useEffect(() => {
     setFilteredBooks(
@@ -19,65 +25,61 @@ function App() {
         book.genres.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search]);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  }
-
-  const hideModal = () => {
-    setIsModalVisible(false);
-  }
-
-  const handleInputChange = (event) => {
-    setReviewText(event.target.value);
-  };
-
-  const handleAddBookReviewSubmit = (event) => {
-    event.preventDefault();
-
-    if (selectedBook) {
-      const updatedBooks = filteredBooks.map((book) => {
-        if (book.title === selectedBook.title) {
-          return {
-            ...book,
-            reviews: book.reviews ? [...book.reviews, reviewText] : [reviewText],
-          };
-        }
-
-        return book;
-      });
-
-      setFilteredBooks(updatedBooks);
-      setReviewText('');
-      hideModal();
-    }
-  };
+  }, [search, books]);
 
   const bookCards = filteredBooks.map((book, i) => {
-    return <BookCard book={book} key={i} showModal={showModal} setSelectedBook={setSelectedBook} />;
-});
-
-const addReview = (book, reviewText) => {
-  const updatedBooks = filteredBooks.map((b) => {
-    if (b.title === book.title) {
-      return {
-        ...b,
-        reviews: b.reviews ? [...b.reviews, reviewText] : [reviewText],
-      };
-    }
-
-    return b;
+    return <BookCard book={book} key={i} />;
   });
 
-  setFilteredBooks(updatedBooks);
-  hideModal();
-};
+  const handleInputChange = (e) => {
+    setBookFormState(prevState => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  const handleAddBookReview = (e) => {
+    e.preventDefault();
+    
+    // Find the book in the books data
+    const bookToUpdate = bookData.find(book => book.title === bookFormState.title);
+  
+    // If the book is found, create a new review and add it to the book's reviews array
+    if (bookToUpdate) {
+      const newReview = {
+        username: bookFormState.username,
+        review: bookFormState.review,
+      };
+  
+      const newBookData = bookData.map(book => {
+        if (book.title === bookToUpdate.title) {
+          return {
+            ...book,
+            reviews: [...book.reviews, newReview],
+          };
+        }
+  
+        return book;
+      });
+  
+      // Set the new book data state, clear the form state, and hide the modal
+      setBookData(newBookData);
+      setBookFormState({
+        title: "",
+        author: "",
+        username: "",
+        review: "",
+      });
+      setIsModalVisible(false);
+    }
+  };
+  
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center', paddingBottom: '1rem', fontSize: '50px' }}>Book Bench</h1>
-      <h2 style={{ textAlign: 'center', paddingBottom: '2rem', fontSize: '20px' }}>A Book Review Forum</h2>
+      <h1 style={{ textAlign: 'center', paddingBottom: '2rem', fontSize: '40px' }}>Book Bench</h1>
       <input
         type="text"
         placeholder="Search by title, author or genre"
@@ -85,24 +87,61 @@ const addReview = (book, reviewText) => {
         className="w-full px-3 py-2 border-2 border-gray-300 bg-white rounded-md outline-none focus:border-purple-100"
         style={{ marginBottom: '2rem' }}
       />
+      <div className="flex justify-between mb-4">
+        <div></div>
+        <div><button className="bg-purple-300 px-4 py-2" onClick={() => setIsModalVisible(true)}>+ Add Book Review</button></div>
+      </div>
       <div className="grid grid-cols-3 gap-4">
         {bookCards}
-        <Modal isVisible={isModalVisible} hideModal={hideModal} book={selectedBook} addReview={addReview}>
-          {selectedBook && (
-            <form onSubmit={handleAddBookReviewSubmit}>
-              <h2>{selectedBook.title} Review</h2>
-              <textarea
-                value={reviewText}
+        <Modal isVisible={isModalVisible} hideModal={() => setIsModalVisible(false)} 
+        books={books}
+        handleAddBookReview={handleAddBookReview}>
+          <form
+            onSubmit={handleAddBookReview}
+            className="selection:bg-blue-200 flex flex-col gap-2"
+          >
+          <h1 style={{ color: 'blue', fontWeight: 'bold'}}>Submit a Review</h1>
+            <fieldset className="flex flex-col">
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                value={bookFormState.title}
                 onChange={handleInputChange}
+                className="bg-white border-4 focus:outline-none p-2"
               />
-              <button type="submit">Submit</button>
-            </form>
-          )}
+            </fieldset>
+            <fieldset className="flex flex-col">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                value={bookFormState.username}
+                onChange={handleInputChange}
+                className="bg-white border-4 focus:outline-none p-2"
+              />
+            </fieldset>
+            <fieldset className="flex flex-col">
+              <label htmlFor="review">Review</label>
+              <textarea
+                name="review"
+                id="review"
+                value={bookFormState.review}
+                onChange={handleInputChange}
+                className="bg-white border-4 focus:outline-none p-2"
+              />
+            </fieldset>
+            <input
+              className="mt-4 bg-blue-500 hover:bg-blue-600 transition cursor-pointer py-2 text-white"
+              type="submit"
+            />
+          </form>
         </Modal>
-
       </div>
     </div>
-  );
+  )
 }
 
 export default App;

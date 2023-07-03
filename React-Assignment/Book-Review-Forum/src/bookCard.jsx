@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function BookCard({ book, showModal, setSelectedBook }) {
     const {
         image: { src, alt },
@@ -10,7 +12,8 @@ export default function BookCard({ book, showModal, setSelectedBook }) {
     } = book;
 
     const displayReviews = () => {
-        alert(`Reviews for ${title}: \n\n${reviews.join('\n\n')}`);
+        setSelectedBook(book);
+        showModal();
     };
 
     return (
@@ -28,22 +31,10 @@ export default function BookCard({ book, showModal, setSelectedBook }) {
                     <li className="b-desc__genres">{genres}</li>
                     <li className="b-desc__publish-date">{publishDate}</li>
                 </ul>
-                <div className = "btn__review">
-                    <button
-                        className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3"
-                        onClick={() => {
-                          showModal();
-                          setSelectedBook(book);
-                        }}
-                    >Submit Review
-                    </button>
-                    <button
-                        className="bg-gray-200 px-4 py-2 hover:bg-gray-300 transition m-3"
-                        onClick={displayReviews}
-                    >Reviews
-                    </button>
-                </div>
+                <br></br>
+                <button className ="bg-purple-300 px-4 py-2" onClick={displayReviews}>Reviews</button>
             </div>
         </div>
     );
 }
+
