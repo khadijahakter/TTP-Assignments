@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import BookCard from "./bookCard";
-import books from "./books";
+// import books from "./books";
 import './App.css'
 import Modal from './ui/Modal';
 
 function App() {
   const [search, setSearch] = useState('');
-  const [filteredBooks, setFilteredBooks] = useState(books);
+  const [bookData, setBookData] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState(bookData);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [bookData, setBookData] = useState(books);
 
   const [bookFormState, setBookFormState] = useState({
     title: "",
@@ -18,14 +18,29 @@ function App() {
   });
 
   useEffect(() => {
+    async function fetchBooks() {
+      const response = await fetch('http://localhost:3000/books');
+      const books = await response.json();
+      // if(!ignore) {
+        setBookData(books);
+      // }
+      console.log(books);
+      return books;
+    }
+    
+    fetchBooks();
+  }, []);
+
+  // filter the books array based on the search query 
+  useEffect(() => {
     setFilteredBooks(
-      books.filter((book) =>
+      bookData.filter((book) =>
         book.title.toLowerCase().includes(search.toLowerCase()) ||
         book.author.toLowerCase().includes(search.toLowerCase()) ||
         book.genres.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, books]);
+  }, [search, bookData]);
 
   const bookCards = filteredBooks.map((book, i) => {
     return <BookCard book={book} key={i} bookData={bookData} />;
@@ -41,7 +56,6 @@ function App() {
       };
     });
   };
-
 
   const handleAddBookReview = (e) => {
     e.preventDefault();
@@ -81,7 +95,6 @@ function App() {
     }
   };
 
-
   return (
     <div>
       <h1 style={{
@@ -94,6 +107,7 @@ function App() {
       <input
         type="text"
         placeholder="Search by title, author or genre"
+        // trigger the search from user input by on change event 
         onChange={(e) => setSearch(e.target.value)}
         className="w-full px-3 py-2 border-2 border-gray-300 bg-white rounded-md outline-none focus:border-purple-100"
         style={{ marginBottom: '2rem' }}
@@ -105,7 +119,7 @@ function App() {
       <div className="grid grid-cols-3 gap-4">
         {bookCards}
         <Modal isVisible={isModalVisible} hideModal={() => setIsModalVisible(false)}
-          books={books}
+          bookData={bookData}
           handleAddBookReview={handleAddBookReview}>
           <form
             onSubmit={handleAddBookReview}
