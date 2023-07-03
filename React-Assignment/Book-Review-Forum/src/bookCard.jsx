@@ -1,21 +1,23 @@
 import React from 'react';
 
-export default function BookCard({ book, showModal, setSelectedBook }) {
+function BookCard({ book, bookData }) {
     const {
-        id,
-        image: { src, alt },
-        title,
-        author,
-        pages,
-        genres,
-        publishDate,
-        reviews,
+      id,
+      image: { src, alt },
+      title,
+      author,
+      pages,
+      genres,
+      publishDate,
+      reviews,
     } = book;
 
     const displayReviews = () => {
         setSelectedBook(book);
         showModal();
     };
+
+    const thisBookData = bookData.find(b => b.id === book.id);
 
     return (
         <div className="b-desc">
@@ -39,3 +41,4 @@ export default function BookCard({ book, showModal, setSelectedBook }) {
     );
 }
 
+export default BookCard;

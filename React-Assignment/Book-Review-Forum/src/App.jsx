@@ -28,17 +28,20 @@ function App() {
   }, [search, books]);
 
   const bookCards = filteredBooks.map((book, i) => {
-    return <BookCard book={book} key={i} />;
+    return <BookCard book={book} key={i} bookData={bookData} />;
   });
 
-  const handleInputChange = (e) => {
-    setBookFormState(prevState => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+
+  setBookFormState(prevState => {
+    return {
+      ...prevState,
+      [name]: value
+    };
+  });
+};
+
 
   const handleAddBookReview = (e) => {
     e.preventDefault();
