@@ -31,31 +31,31 @@ function App() {
     return <BookCard book={book} key={i} bookData={bookData} />;
   });
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
-  setBookFormState(prevState => {
-    return {
-      ...prevState,
-      [name]: value
-    };
-  });
-};
+    setBookFormState(prevState => {
+      return {
+        ...prevState,
+        [name]: value
+      };
+    });
+  };
 
 
   const handleAddBookReview = (e) => {
     e.preventDefault();
-    
+
     // Find the book in the books data
     const bookToUpdate = bookData.find(book => book.title === bookFormState.title);
-  
+
     // If the book is found, create a new review and add it to the book's reviews array
     if (bookToUpdate) {
       const newReview = {
         username: bookFormState.username,
         review: bookFormState.review,
       };
-  
+
       const newBookData = bookData.map(book => {
         if (book.title === bookToUpdate.title) {
           return {
@@ -63,10 +63,10 @@ const handleInputChange = (e) => {
             reviews: [...book.reviews, newReview],
           };
         }
-  
+
         return book;
       });
-  
+
       // Set the new book data state, clear the form state, and hide the modal
       setBookData(newBookData);
       setBookFormState({
@@ -78,11 +78,17 @@ const handleInputChange = (e) => {
       setIsModalVisible(false);
     }
   };
-  
+
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center', paddingBottom: '2rem', fontSize: '40px' }}>Book Bench</h1>
+      <h1 style={{
+        textAlign: 'center',
+        paddingBottom: '1rem',
+        fontSize: '45px',
+        color: 'white',
+      }}>Book Bench</h1>
+      <h2 style= {{textAlign: 'center', fontSize: '20px', paddingBottom: '1rem' }}>A Book Review Forum</h2>
       <input
         type="text"
         placeholder="Search by title, author or genre"
@@ -96,14 +102,14 @@ const handleInputChange = (e) => {
       </div>
       <div className="grid grid-cols-3 gap-4">
         {bookCards}
-        <Modal isVisible={isModalVisible} hideModal={() => setIsModalVisible(false)} 
-        books={books}
-        handleAddBookReview={handleAddBookReview}>
+        <Modal isVisible={isModalVisible} hideModal={() => setIsModalVisible(false)}
+          books={books}
+          handleAddBookReview={handleAddBookReview}>
           <form
             onSubmit={handleAddBookReview}
             className="selection:bg-blue-200 flex flex-col gap-2"
           >
-          <h1 style={{ color: 'blue', fontWeight: 'bold'}}>Submit a Review</h1>
+            <h1 style={{ color: 'gray', fontWeight: 'bold' }}>Submit a Review</h1>
             <fieldset className="flex flex-col">
               <label htmlFor="title">Title</label>
               <input
@@ -137,7 +143,7 @@ const handleInputChange = (e) => {
               />
             </fieldset>
             <input
-              className="mt-4 bg-blue-500 hover:bg-blue-600 transition cursor-pointer py-2 text-white"
+              className="mt-4 bg-gray-300 hover:bg-gray-400 transition cursor-pointer py-2 text-white"
               type="submit"
             />
           </form>
