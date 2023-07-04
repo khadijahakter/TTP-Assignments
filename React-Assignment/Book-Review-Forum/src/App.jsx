@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import BookCard from "./bookCard";
-// import books from "./books";
 import './App.css'
 import Modal from './ui/Modal';
 
@@ -22,12 +21,12 @@ function App() {
       const response = await fetch('http://localhost:3000/books');
       const books = await response.json();
       // if(!ignore) {
-        setBookData(books);
+      setBookData(books);
       // }
       console.log(books);
       return books;
     }
-    
+
     fetchBooks();
   }, []);
 
@@ -86,11 +85,16 @@ function App() {
       setBookFormState({
         title: "",
         author: "",
-        username: "",
-        review: "",
+        pages: null,
+        genres: "",
+        publishDate: "",
+        image: {
+          src: "",
+          alt: "",
+        },
       });
       setIsModalVisible(false);
-      console.log("Updated Reviews:", newBookData.find(book => book.title === bookFormState.title)?.reviews);
+      // console.log("Updated Reviews:", newBookData.find(book => book.title === bookFormState.title)?.reviews);
 
     }
   };
@@ -103,7 +107,7 @@ function App() {
         fontSize: '45px',
         color: 'white',
       }}>Book Bench</h1>
-      <h2 style= {{textAlign: 'center', fontSize: '20px', paddingBottom: '1rem' }}>A Book Review Forum</h2>
+      <h2 style={{ textAlign: 'center', fontSize: '20px', paddingBottom: '1rem' }}>A Book Review Forum</h2>
       <input
         type="text"
         placeholder="Search by title, author or genre"
@@ -114,7 +118,7 @@ function App() {
       />
       <div className="flex justify-between mb-4">
         <div></div>
-        <div><button className="bg-purple-300 px-4 py-2" onClick={() => setIsModalVisible(true)}>+ Add Book Review</button></div>
+        <div><button className="bg-purple-300 px-4 py-2" onClick={() => setIsModalVisible(true)}>+ Add a Book</button></div>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {bookCards}
@@ -125,7 +129,7 @@ function App() {
             onSubmit={handleAddBookReview}
             className="selection:bg-blue-200 flex flex-col gap-2"
           >
-            <h1 style={{ color: 'gray', fontWeight: 'bold' }}>Submit a Review</h1>
+            <h1 style={{ color: 'rgba(76, 0, 130, 0.708)', fontWeight: 'bold' }}>New Book Submission</h1>
             <fieldset className="flex flex-col">
               <label htmlFor="title">Title</label>
               <input
@@ -138,22 +142,43 @@ function App() {
               />
             </fieldset>
             <fieldset className="flex flex-col">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">Author</label>
               <input
                 type="text"
-                name="username"
-                id="username"
-                value={bookFormState.username}
+                name="author"
+                id="author"
+                value={bookFormState.author}
                 onChange={handleInputChange}
                 className="bg-white border-4 focus:outline-none p-2"
               />
             </fieldset>
             <fieldset className="flex flex-col">
-              <label htmlFor="review">Review</label>
-              <textarea
-                name="review"
-                id="review"
-                value={bookFormState.review}
+              <label htmlFor="review">Pages</label>
+              <input
+                name="pages"
+                id="pages"
+                type="number"
+                value={bookFormState.pages}
+                onChange={handleInputChange}
+                className="bg-white border-4 focus:outline-none p-2"
+              />
+            </fieldset>
+            <fieldset className="flex flex-col">
+              <label htmlFor="review">Genres</label>
+              <input
+                name="genres"
+                id="genres"
+                value={bookFormState.genres}
+                onChange={handleInputChange}
+                className="bg-white border-4 focus:outline-none p-2"
+              />
+            </fieldset>
+            <fieldset className="flex flex-col">
+              <label htmlFor="review">Publish Date</label>
+              <input
+                name="publishDate"
+                id="publishDate"
+                value={bookFormState.publishDate}
                 onChange={handleInputChange}
                 className="bg-white border-4 focus:outline-none p-2"
               />
