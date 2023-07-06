@@ -4,9 +4,10 @@ export default function BookForm({ handleAddBookReview }) {
   const [bookFormState, setBookFormState] = useState({
     title: "",
     author: "",
-    pages: null,
+    pages: "",
     genres: "",
     publishDate: "",
+    imageUrl: "",
   });
 
   const handleInputChange = (e) => {
@@ -20,25 +21,30 @@ export default function BookForm({ handleAddBookReview }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const newBook = {
-      ...bookFormState,
+      title: bookFormState.title,
+      author: bookFormState.author,
+      pages: bookFormState.pages,
+      genres: bookFormState.genres,
+      publishDate: bookFormState.publishDate,
       image: {
-        src: "",
-        alt: "",
+        src: bookFormState.imageUrl,
       },
       reviews: [],
     };
-
+  
     handleAddBookReview(newBook);
     setBookFormState({
       title: "",
       author: "",
-      pages: null,
+      pages: "",
       genres: "",
       publishDate: "",
+      imageUrl: "",
     });
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className="selection:bg-blue-200 flex flex-col gap-2">
@@ -92,6 +98,16 @@ export default function BookForm({ handleAddBookReview }) {
           name="publishDate"
           id="publishDate"
           value={bookFormState.publishDate}
+          onChange={handleInputChange}
+          className="bg-white border-4 focus:outline-none p-2"
+        />
+      </fieldset>
+      <fieldset className="flex flex-col">
+        <label htmlFor="review">Image URL</label>
+        <input
+          name="imageUrl"
+          id="imageUrl"
+          value={bookFormState.imageUrl}
           onChange={handleInputChange}
           className="bg-white border-4 focus:outline-none p-2"
         />

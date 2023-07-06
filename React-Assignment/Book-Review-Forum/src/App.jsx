@@ -3,12 +3,14 @@ import BookCard from "./bookCard";
 import './App.css';
 import Modal from './ui/Modal';
 import BookForm from './AddBookForm';
+import BookDetails from './bookDetails';
 
 function App() {
   const [search, setSearch] = useState('');
   const [bookData, setBookData] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState(bookData);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     async function fetchBooks() {
@@ -30,9 +32,34 @@ function App() {
     );
   }, [search, bookData]);
 
-  const handleAddBookReview = (newBook) => {
-    setBookData(prevBookData => [...prevBookData, newBook]);
-    setIsModalVisible(false);
+  const handleAddBookReview = async (newBook) => {
+    try {
+      const response = await fetch('http://localhost:3000/books', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBook),
+      });
+  
+      if (response.ok) {
+        // Book added successfully, you can update the local state if needed
+        const addedBook = await response.json();
+        setBookData((prevBookData) => [...prevBookData, addedBook]);
+        setIsModalVisible(false);
+      } else {
+        console.error('Failed to add book.');
+        // Handle error case if needed
+      }
+    } catch (error) {
+      console.error('Error occurred while adding book:', error);
+      // Handle error case if needed
+    }
+  };
+  
+  
+  const displayReviews = () => {
+    setIsModalVisible(true);
   };
 
   const bookCards = filteredBooks.map((book, i) => (

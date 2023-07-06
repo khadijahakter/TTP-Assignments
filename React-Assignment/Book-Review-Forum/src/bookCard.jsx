@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BookCard({ book, bookData, setSelectedBook, showModal }) {
   const {
@@ -16,8 +17,6 @@ function BookCard({ book, bookData, setSelectedBook, showModal }) {
     showModal();
   };
 
-  const thisBookData = bookData.find((b) => b.id === book.id);
-
   return (
     <div className="b-desc">
       <img className="b-desc__book-image" src={src} alt={alt} />
@@ -30,9 +29,13 @@ function BookCard({ book, bookData, setSelectedBook, showModal }) {
           <li className="b-desc__publish-date">{publishDate}</li>
         </ul>
         <br />
-        <button className="bg-purple-300 px-4 py-2" onClick={displayReviews}>
+        <Link
+          to={`/books/${book.id}/reviews`}
+          className="bg-purple-300 px-4 py-2 text-white rounded"
+          style={{ backgroundColor: 'rgba(76, 0, 130, 0.708)', textDecoration: 'none' }}
+        >
           Reviews
-        </button>
+        </Link>
       </div>
     </div>
   );
