@@ -19,8 +19,6 @@ var removeDuplicates = function (nums) {
 };
 
 nums = [1, 1, 1, 1, 2, 3, 4, 4, 5]
-nums1 = [20, 20, 40]
 console.log(removeDuplicates(nums));
-console.log(removeDuplicates(nums1));
 
 module.exports = removeDuplicates;
