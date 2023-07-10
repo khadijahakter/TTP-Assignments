@@ -16,3 +16,10 @@ function findDuplicate(nums) {
 nums = [1, 3, 4, 2, 2]
 // nums = [3, 1, 3, 4]
 console.log(findDuplicate(nums));
+
+module.exports = findDuplicate;
+
+/*
+the same concept is followed as the function to find all duplicate values
+given the array has only one duplicate, only one duplicate value is returned
+*/
