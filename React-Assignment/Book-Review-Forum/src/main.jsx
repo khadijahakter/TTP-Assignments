@@ -5,7 +5,7 @@ import BookForm from './AddBookForm.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import ErrorPage from './ErrorPage.jsx'
-import BookReviews from './reviewBook.jsx'
+import BookDetails from './bookDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <BookForm />,
   },
   {
-    path: "/books/:id/reviews",
-    element: <BookReviews />,
+    path: "/books/:id/details",
+    element: <BookDetails />,
   },
 ]);
 

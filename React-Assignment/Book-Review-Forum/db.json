@@ -137,41 +137,16 @@
       "id": 9
     },
     {
-      "title": "The Handmaid's Tale",
-      "author": "Margaret Atwood",
-      "pages": "325",
-      "genres": "Fantasy Fiction",
-      "publishDate": "January 1, 1985",
+      "title": "Pageboy",
+      "author": "Elliot Page",
+      "pages": "271",
+      "genres": "Nonfiction, Audiobook",
+      "publishDate": "June 6, 2023",
       "image": {
-        "src": ""
+        "src": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1670327813i/60473073.jpg"
       },
       "reviews": [],
       "id": 10
-    },
-    {
-      "title": "Maybe You Should Talk to Someone",
-      "author": "Lori Gottlieb",
-      "pages": "415",
-      "genres": "Nonfiction, Psychology",
-      "publishDate": "April 2, 2019",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1547189796i/37570546.jpg",
-      "image": {
-        "src": ""
-      },
-      "reviews": [],
-      "id": 11
-    },
-    {
-      "title": "Pretend Book",
-      "author": "Who knows?",
-      "pages": "230",
-      "genres": "Make belief",
-      "publishDate": "July 5, 2023",
-      "image": {
-        "src": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1592250003i/49127514.jpg"
-      },
-      "reviews": [],
-      "id": 12
     }
   ]
 }

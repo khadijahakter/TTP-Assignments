@@ -9,13 +9,7 @@ function BookCard({ book, bookData, setSelectedBook, showModal }) {
     pages,
     genres,
     publishDate,
-    reviews,
   } = book;
-
-  const displayReviews = () => {
-    setSelectedBook(book);
-    showModal();
-  };
 
   return (
     <div className="b-desc">
@@ -30,11 +24,11 @@ function BookCard({ book, bookData, setSelectedBook, showModal }) {
         </ul>
         <br />
         <Link
-          to={`/books/${book.id}/reviews`}
+          to={`/books/${book.id}/details`}
           className="bg-purple-300 px-4 py-2 text-white rounded"
           style={{ backgroundColor: 'rgba(76, 0, 130, 0.708)', textDecoration: 'none' }}
         >
-          Reviews
+          Details
         </Link>
       </div>
     </div>

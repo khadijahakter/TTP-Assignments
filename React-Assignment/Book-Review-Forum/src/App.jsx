@@ -3,14 +3,12 @@ import BookCard from "./bookCard";
 import './App.css';
 import Modal from './ui/Modal';
 import BookForm from './AddBookForm';
-import BookDetails from './bookDetails';
 
 function App() {
   const [search, setSearch] = useState('');
   const [bookData, setBookData] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState(bookData);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     async function fetchBooks() {
@@ -43,17 +41,14 @@ function App() {
       });
   
       if (response.ok) {
-        // Book added successfully, you can update the local state if needed
         const addedBook = await response.json();
         setBookData((prevBookData) => [...prevBookData, addedBook]);
         setIsModalVisible(false);
       } else {
         console.error('Failed to add book.');
-        // Handle error case if needed
       }
     } catch (error) {
       console.error('Error occurred while adding book:', error);
-      // Handle error case if needed
     }
   };
   
@@ -66,6 +61,7 @@ function App() {
     <BookCard book={book} key={i} bookData={bookData} />
   ));
 
+  
   return (
     <div>
       <h1 style={{
