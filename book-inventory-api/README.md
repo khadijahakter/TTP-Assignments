@@ -31,8 +31,10 @@ Test the API endpoints using Postman.
 2. Test each endpoint (GET, POST, PATCH, DELETE) with different scenarios to ensure they function correctly.
 3. Verify that the API endpoints are correctly interacting with the PostgreSQL database and returning the expected results.
 
-- ![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c)
-
+<div style="width:60px ; height:60px">
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c)
+<div>
+  
 ### Deliverable:
 
 - A Node.js and Express.js application with the PostgreSQL database connection established.
