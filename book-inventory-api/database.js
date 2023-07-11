@@ -9,15 +9,17 @@ const pool = new Pool({
     port: process.env.DB_PORT
 });
 
+module.exports = pool;
+
 const createTableQuery = `
-  CREATE TABLE IF NOT EXISTS book_data (
+  CREATE TABLE IF NOT EXISTS books (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     author TEXT NOT NULL,
     genre TEXT,
-    quantity INTEGER DEFAULT 0,
+    quantity INTEGER DEFAULT 0
   );
-`
+`;
 
 const createTable = async () => {
     try {
@@ -36,5 +38,3 @@ module.exports = {
         return pool.query(text, params, callback);
     },
 };
-
-module.exports = pool;
