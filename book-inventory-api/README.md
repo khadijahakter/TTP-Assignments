@@ -27,11 +27,12 @@ Implement the API endpoints to perform CRUD operations on books.
 
 Test the API endpoints using Postman.
 
-1. Use Postman or any API testing tool to send requests to the API endpoints. (add screenshots in the repo README of your sucessful API calls)
+1. Use Postman or any API testing tool to send requests to the API endpoints. (add screenshots in the repo README of your successful API calls)
 2. Test each endpoint (GET, POST, PATCH, DELETE) with different scenarios to ensure they function correctly.
 3. Verify that the API endpoints are correctly interacting with the PostgreSQL database and returning the expected results.
 
 <div style="width: 60px; height: 60px;">
+  <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/5fb64c34-250e-4bb9-8793-40e33291cacf" alt="image" style="width: 50%; height: 50%;">
   <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c" alt="image" style="width: 50%; height: 50%;">
 </div>
 
