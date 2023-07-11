@@ -31,8 +31,11 @@ Test the API endpoints using Postman.
 2. Test each endpoint (GET, POST, PATCH, DELETE) with different scenarios to ensure they function correctly.
 3. Verify that the API endpoints are correctly interacting with the PostgreSQL database and returning the expected results.
 
+Get a specific book
   <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/f8410270-e9bb-44ff-9003-a4cf06c1806d" alt="image" style="width: 50%; height: 50%;">
+Add a book
   <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/8781acba-d131-47bf-b92d-a091b7663aca" alt="image" style="width: 50%; height: 50%;">
+  
   <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/5fb64c34-250e-4bb9-8793-40e33291cacf" alt="image" style="width: 50%; height: 50%;">
   <img src="https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c" alt="image" style="width: 50%; height: 50%;">
   
