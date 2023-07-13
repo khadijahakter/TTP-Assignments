@@ -27,14 +27,28 @@ Implement the API endpoints to perform CRUD operations on books.
 
 Test the API endpoints using Postman.
 
-1. Use Postman or any API testing tool to send requests to the API endpoints. (add screenshots in the repo README of your sucessful API calls)
+1. Use Postman or any API testing tool to send requests to the API endpoints. (add screenshots in the repo README of your successful API calls)
 2. Test each endpoint (GET, POST, PATCH, DELETE) with different scenarios to ensure they function correctly.
 3. Verify that the API endpoints are correctly interacting with the PostgreSQL database and returning the expected results.
 
+## Get all books
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/5fb64c34-250e-4bb9-8793-40e33291cacf)
+
+## Get a specific book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/f8410270-e9bb-44ff-9003-a4cf06c1806d)
+
+## Add a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/8781acba-d131-47bf-b92d-a091b7663aca)
+
+## Updating a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/08ce5538-c5b6-401c-8e2b-f3df5538c0a6)
+
+## Delete a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c)
+  
 ### Deliverable:
 
 - A Node.js and Express.js application with the PostgreSQL database connection established.
 - The "books" table created in the PostgreSQL database.
 - CRUD routes implemented for the bookstore inventory API.
 - Successful test results from Postman, including valid request responses.
-
