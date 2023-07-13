@@ -16,18 +16,30 @@ class Recipe extends Model {
       title: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+            len: [3, 255], 
+          },
       },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
+        validate: {
+            len: [1, 500], 
+          },
       },
       ingredients: {
         type: DataTypes.TEXT,
         allowNull: false,
+        validate: {
+            len: [1, 1000],
+          },
       },
       instructions: {
         type: DataTypes.TEXT,
         allowNull: false,
+        validate: {
+            len: [1, 5000], 
+          },
       },
       createdAt: {
         type: DataTypes.DATE,

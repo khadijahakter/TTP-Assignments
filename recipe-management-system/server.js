@@ -47,13 +47,16 @@ app.get("/recipes/:id", async (req, res) => {
 });
 
 app.post("/recipes", async (req, res) => {
+    const recipeData = req.body;
     try {
-        const newRecipe = await Recipe.create(req.body);
-
+        const newRecipe = await Recipe.create(recipeData);
         res.status(201).json(newRecipe);
     } catch (err) {
+        if (err.name === 'SequelizeValidationError') {
+            return res.status(422).json({ errors: err.errors.map(e => e.message) });
+        }
         console.error(err);
-        res.status(500).send({ message: err.message });
+        res.status(500).json({ message: 'An unexpected error occurred.' });
     }
 });
 
@@ -76,20 +79,20 @@ app.patch("/recipes/:id", async (req, res) => {
 
 app.delete("/recipes/:id", async (req, res) => {
     const jobId = parseInt(req.params.id, 10);
-  
+
     try {
-      const deleteOp = await Recipe.destroy({ where: { id: jobId } });
-  
-      if (deleteOp > 0) {
-        res.status(200).send({ message: "Recipe deleted successfully" });
-      } else {
-        res.status(404).send({ message: "Recipe not found" });
-      }
+        const deleteOp = await Recipe.destroy({ where: { id: jobId } });
+
+        if (deleteOp > 0) {
+            res.status(200).send({ message: "Recipe deleted successfully" });
+        } else {
+            res.status(404).send({ message: "Recipe not found" });
+        }
     } catch (err) {
-      console.error(err);
-      res.status(500).send({ message: err.message });
+        console.error(err);
+        res.status(500).send({ message: err.message });
     }
-  });
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
