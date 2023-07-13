@@ -13,7 +13,7 @@ function findDuplicate(nums) {
     return arr;
 }
 
-nums = [1, 3, 4, 2, 2]
+nums = [1, 3, 4, 2]
 // nums = [3, 1, 3, 4]
 console.log(findDuplicate(nums));
 
