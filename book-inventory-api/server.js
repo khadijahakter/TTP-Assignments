@@ -72,7 +72,7 @@ app.post("/books", async (req, res) => {
 
 app.patch("/books/:id", async (req, res) => {
     const bookId = parseInt(req.params.id, 10);
-    const { title, author, genre, quantity } = req.body;
+    const { title, author, genre, quantity, } = req.body;
 
     try {
         const updatedBook = await query(
@@ -80,7 +80,7 @@ app.patch("/books/:id", async (req, res) => {
         SET title = $1, author = $2, genre = $3, quantity = $4
         WHERE id = $5
         RETURNING *`,
-            [title, author, genre, quantity]
+            [title, author, genre, quantity, bookId]
         );
 
         const foundBook = updatedBook.rows[0];
