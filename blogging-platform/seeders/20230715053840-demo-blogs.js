@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
       "users",
       [
@@ -28,71 +28,72 @@ module.exports = {
       {}
     );
     const users = await queryInterface.sequelize.query(`SELECT id FROM users`);
-    const userId = users[0][0].id;
+    const userIds = users[0].map(user => user.id);
 
     await queryInterface.bulkInsert(
       "posts",
       [
         {
           content: "Nature has always fascinated me.",
-          UserId: userId[0], 
+          UserId: userIds[0], 
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           content: "Someone who loves classic fashion.",
-          UserId: userId[1], 
+          UserId: userIds[1], 
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           content: "Protect Our Oceans.",
-          UserId: userId[2], 
+          UserId: userIds[2], 
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           content: "Save the Planet!",
-          UserId: userId[2], 
+          UserId: userIds[2], 
           createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
       {}
-      );
-      const posts = await queryInterface.sequelize.query(`SELECT id FROM posts`);
-      const postId = posts[0][0].id;
+    );
 
-      await queryInterface.bulkInsert(
-        "comments",
-        [
-          {
-            content: "Inspiring! Let's work together! ",
-            UserId: userId[0], 
-            PostId: postId[0], 
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          },
-          {
-            content: "Love this message!",
-            UserId: userId[1], 
-            PostId: postId[0], 
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          },
-          {
-            content: "Count me in!",
-            UserId: userId[2],
-            PostId: postId[1], 
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          },
-        ],
-        {}
-      );
+    const posts = await queryInterface.sequelize.query(`SELECT id FROM posts`);
+    const postIds = posts[0].map(post => post.id);
+
+    await queryInterface.bulkInsert(
+      "comments",
+      [
+        {
+          content: "Inspiring! Let's work together!",
+          UserId: userIds[0], 
+          PostId: postIds[0], 
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          content: "Love this message!",
+          UserId: userIds[1], 
+          PostId: postIds[0], 
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          content: "Count me in!",
+          UserId: userIds[2],
+          PostId: postIds[1], 
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete("users", null, {});    
     await queryInterface.bulkDelete("posts", null, {});
     await queryInterface.bulkDelete("comments", null, {});
