@@ -6,12 +6,12 @@ This is a Node.js web application that implements a CRUD (Create, Read, Update, 
 
 1. Clone the repository from GitHub.
 2. Install the required dependencies using npm in your terminal:
-npm install express 
-npm install pg 
-npm install --save sequelize sequelize-cli pg-hstore
-npx sequelize-cli init
-npm install bcryptjs
-npm install dotenv --save-dev
+- `npm install express`
+- `npm install pg`
+- `npm install --save sequelize sequelize-cli pg-hstore`
+- `npx sequelize-cli init`
+- `npm install bcryptjs`
+- `npm install dotenv --save-dev`
 
 3. Set up the PostgreSQL database. Update the database configuration in config/database.js if necessary.
 4. Run the database migrations to create the required tables:
