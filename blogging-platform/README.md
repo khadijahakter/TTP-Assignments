@@ -4,7 +4,11 @@ This is a Node.js web application that implements a CRUD (Create, Read, Update, 
 
 ## How to Set Up and Run the Application
 
-1. Clone the repository from GitHub.
+1. Clone the repository from GitHub:
+    ```bash
+    git clone https://github.com/your-username/blogging-platform.git
+    cd blogging-platform
+
 2. Install the required dependencies using npm in your terminal:
 - `npm install express`
 - `npm install pg`
@@ -14,10 +18,21 @@ This is a Node.js web application that implements a CRUD (Create, Read, Update, 
 - `npm install dotenv --save-dev`
 
 3. Set up the PostgreSQL database. Update the database configuration in config/database.js if necessary.
+This application uses a PostgreSQL database to store users, posts, and comments. Before running the application, make sure you have PostgreSQL installed and running on your system.
+
+Next, create a `.env` file in the root directory of the project and add the following environment variables:
+```
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
+DB_DATABASE=your_db_name
+DB_HOST=your_db_host
+DB_PORT=your_db_port
+```
+
 4. Run the database migrations to create the required tables:
-npx sequelize-cli db:migrate
+`npx sequelize-cli db:migrate`
 5. Start the Node.js server:
-npm start
+`npm start`
 
 ## Functionality of API Endpoints
 Below is a brief explanation of the functionality of each API endpoint:
