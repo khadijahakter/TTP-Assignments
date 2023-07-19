@@ -38,8 +38,8 @@ DB_PORT=your_db_port
 Below is a brief explanation of the functionality of each API endpoint:
 
 1. User Registration and Login Endpoints:
-
-- `POST /api/register`: Register a new user with a username, email, and password.
+   
+- `POST /api/signup`: Register a new user with a username, email, and password.
 - `POST /api/login`: Authenticate the user with username and password, and create a session cookie upon successful login.
 
 2. CRUD Operations for Posts:
@@ -60,3 +60,20 @@ Below is a brief explanation of the functionality of each API endpoint:
 
 ## Testing
 Testing the application can be done using Postman or any other API testing tool.
+
+## Signup
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/e584d3f9-ca85-42d2-9680-b2eb517fe9cc)
+
+## Login
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/473e5309-e92b-49c1-9958-1cc785bac4b5)
+
+
+## Add a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/8781acba-d131-47bf-b92d-a091b7663aca)
+
+## Updating a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/08ce5538-c5b6-401c-8e2b-f3df5538c0a6)
+
+## Delete a book
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c)
+  
