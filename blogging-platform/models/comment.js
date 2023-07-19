@@ -6,8 +6,8 @@ const Post = require('./post');
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     static associate(models) {
-      this.belongsTo(User);
-      this.belongsTo(Post);
+      this.belongsTo(models.User);
+      this.belongsTo(models.Post);
     }
   }
   Comment.init({
