@@ -67,13 +67,12 @@ Testing the application can be done using Postman or any other API testing tool.
 ## Login
 ![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/473e5309-e92b-49c1-9958-1cc785bac4b5)
 
+## Get all posts
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/efe0edfd-fca8-434e-8aa2-d853a761525c)
 
-## Add a book
-![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/8781acba-d131-47bf-b92d-a091b7663aca)
+## Get a post by ID
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/cac80426-def7-4bfd-b9cd-a62d924c1266)
 
-## Updating a book
-![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/08ce5538-c5b6-401c-8e2b-f3df5538c0a6)
-
-## Delete a book
-![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/27d18bc9-1f6a-4bab-9617-24100348d98c)
+## Get a comment by ID
+![image](https://github.com/khadillacs/TTP-Assignments/assets/52975594/bb8d0aba-dd81-4c37-b8eb-97decbc662e0)
   
